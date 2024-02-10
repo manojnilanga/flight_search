@@ -1,0 +1,44 @@
+
+
+pip3 install -q -U google-generativeai
+
+
+pip3 install --upgrade google-cloud-aiplatform
+
+./google-cloud-sdk/bin/gcloud config set project flightsearch-413907
+./google-cloud-sdk/bin/gcloud config set project flightsearch-413908
+./google-cloud-sdk/bin/gcloud config set project storied-key-413908
+
+https://console.developers.google.com/apis/api/aiplatform.googleapis.com/overview?project=storied-key-413908
+
+https://developers.google.com/workspace/guides/create-project
+
+google.api_core.exceptions.PermissionDenied: 403 Permission 'aiplatform.endpoints.predict' denied on resource '//aiplatform.googleapis.com/projects/storied-key-413908/locations/us-central1/publishers/google/models/gemini-pro' (or it may not exist). [reason: "IAM_PERMISSION_DENIED"
+
+./google-cloud-sdk/bin/gcloud auth login
+
+
+gcloud projects add-iam-policy-binding storied-key-413908 \
+    --member=serviceAccount:your-service-account@your-project.iam.gserviceaccount.com \
+    --role=roles/aiplatform.endpointUser
+
+./google-cloud-sdk/bin/gcloud projects add-iam-policy-binding storied-key-413908 \
+    --member=serviceAccount:flight-search-service@storied-key-413908.iam.gserviceaccount.com \
+    --role=roles/aiplatform.admin
+
+./google-cloud-sdk/bin/gcloud projects add-iam-policy-binding storied-key-413908 \
+    --member=serviceAccount:flight-service-account-2@storied-key-413908.iam.gserviceaccount.com \
+    --role=roles/automl.predictor
+
+./google-cloud-sdk/bin/gcloud projects add-iam-policy-binding storied-key-413908 \
+    --member=serviceAccount:flight-service-account-2@storied-key-413908.iam.gserviceaccount.com \
+    --role=roles/aiplatform.endpointUser
+
+./google-cloud-sdk/bin/gcloud projects add-iam-policy-binding storied-key-413908 \
+    --member=serviceAccount:service-account-end-points@storied-key-413908.iam.gserviceaccount.com \
+    --role=roles/aiplatform.endpointUser
+
+mnilanga@airarabia.com	Outlook@1318
+
+
+ssh -i "flight_search.pem" ubuntu@ec2-35-180-230-241.eu-west-3.compute.amazonaws.com

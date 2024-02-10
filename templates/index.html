@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Finder</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="text-center">
+    <div class="container">
+        <h1>Hi! I will help you find flights</h1>
+        <form method="post">
+            <div class="form-group">
+                <textarea class="form-control" id="input_text" name="input_text" rows="3" placeholder="Enter your text" required></textarea>
+            </div>
+            <p style="font-size: 12px;">Example 1: We wanted to go on a vacation for a long time. So we decided to go finally. We want to go from Alexandria, Egypt to Bahrain on 2024-02-12.</p>
+            <p style="font-size: 12px;">Example 2: We are in Bahrain. we need to go to Alexandria, Egypt on 2024-02-25</p>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+        <br>
+        {% if gemini_data_dic %}
+            <p class="mt-3">Flight Search Parameters:</p>
+            <ul class="list-group text-left">
+                <li class="list-group-item"><strong>Origin:</strong> {{ gemini_data_dic.origin }}</li>
+                <li class="list-group-item"><strong>Destination:</strong> {{ gemini_data_dic.destination }}</li>
+                <li class="list-group-item"><strong>Date:</strong> {{ gemini_data_dic.date }}</li>
+            </ul>
+        {% endif %}
+        <br>
+        <br>
+        {% if results %}
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <p class="mt-3">Flight Details:</p>
+                    <ul class="list-group text-left">
+                        {% for flight in results %}
+                            <li class="list-group-item">
+                                <strong>Origin:</strong> {{ flight['origin'] }}<br>
+                                <strong>Destination:</strong> {{ flight['destination'] }}<br>
+                                <strong>Flight:</strong> {{ flight['flight_time'] }}<br>
+                                <strong>Fare:</strong> {{ flight['fare'] }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
