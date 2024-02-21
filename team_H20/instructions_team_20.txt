@@ -1,0 +1,60 @@
+Dear Team,
+
+Your cloud VM has been pre-provisioned and is available at the public IP provided below.
+Please use the attached private key and IP detail for access. You have sudo privileges.
+
+Example:
+ssh -l opc 152.70.174.170 -i H20.txt
+
+
+Pre-installed stack:
+ Docker
+ Docker-compose
+ 
+OS:
+Oracle-Linux-9.2
+
+Shape:
+	CPU: 4 OCPU
+	RAM: 8 GB
+	DISK: 50 GB
+
+Network access:
+  Ports 80, 443, 8080, and 8888 are open for public traffic.
+
+##########################################################################
+Additionally, this cloud VM will have access to the following resources:
+##########################################################################
+
+Revamp-StagingX databases: (both PostgreSQL and Couchbase)
+==========================================================
+aero-agent
+aero-anci
+aero-inventory
+aero-ops
+aero-order
+aero-pay
+aero-segment
+aero-tax
+aero-price
+aero-search (including Elasticsearch)
+
+
+Revamp GRPC API access:
+========================
+stage1 => 172.31.4.11:32665
+stage2 => 172.31.4.14:32665
+stage3 => 172.31.4.16:32665
+stage4 => 172.31.4.17:32665
+stage5 => 172.31.4.20:32665
+stage6 => 172.31.4.24:32665
+
+
+Demo Aeromart Database:
+=======================
+10.30.4.38:1521
+
+
+Wishing you the best of luck with the hackathon!
+
+
