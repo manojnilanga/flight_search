@@ -42,3 +42,13 @@ mnilanga@airarabia.com	Outlook@1318
 
 
 ssh -i "flight_search.pem" ubuntu@ec2-35-180-230-241.eu-west-3.compute.amazonaws.com
+
+-------------------
+access set from config.py file only. no need of manual changes
+
+GOOGLE_API_KEY = "AIzaSyBEipsnRDkfwxANsaOv929JDNxDd9Syd2U"
+VERTEXAI_KEY_PATH = "storied-key.json"
+VERTEXTAI_PROJECT_ID = "storied-key-413908"
+VERTEXTAI_LOCATION = "us-central1"
+
+service-account-end-points@storied-key-413908.iam.gserviceaccount.com <- using service account for accessing.

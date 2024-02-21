@@ -27,24 +27,10 @@ def index():
             print("date: " + date)
             results = get_selected_flights(origin_airport, destination_airport, date)
             print(results)
-            # results = [
-            #     {
-            #         "origin": "ffff",
-            #         "destination": "SHJ",
-            #         "flight_time": "2023-01-02 23.45AM",
-            #         "fare": "2100 AED"
-            #     },
-            #     {
-            #         "origin": "ffffffff",
-            #         "destination": "SHJ",
-            #         "flight_time": "2023-01-04 23.45AM",
-            #         "fare": "3100 AED"
-            #     }
-            # ]
         else:
             results = []
             gemini_data_dic = {}
     return render_template('index.html', results=results, gemini_data_dic=gemini_data_dic)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8080)
